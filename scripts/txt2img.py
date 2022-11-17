@@ -210,7 +210,7 @@ def main():
     parser.add_argument(
         "--ckpt",
         type=str,
-        default="models/ldm/stable-diffusion-v1/model.ckpt",
+        default="/stable_diffusion/ckpt/sd-v1-1.ckpt",
         help="path to checkpoint of model",
     )
     parser.add_argument(

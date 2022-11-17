@@ -8,6 +8,7 @@ RUN apt-get install -y tzdata
 RUN apt install -y tmux
 RUN apt install -y htop
 RUN apt install -y ncdu
+RUN apt-get install ffmpeg libsm6 libxext6  -y
 
 COPY requirements.txt ./
 RUN pip install -r requirements.txt && rm ./requirements.txt
