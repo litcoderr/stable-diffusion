@@ -1,0 +1,8 @@
+tqdm
+pytorch-lightning
+transformers==4.19.2
+jupyter
+diffusers
+invisible-watermark
+einops
+omegaconf
