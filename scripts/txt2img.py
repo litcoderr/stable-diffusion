@@ -1,3 +1,4 @@
+from pathlib import Path
 import argparse, os, sys, glob
 import cv2
 import torch
@@ -247,6 +248,8 @@ def main():
     else:
         sampler = DDIMSampler(model)
 
+    opt.outdir = Path("outputs") / opt.prompt
+
     os.makedirs(opt.outdir, exist_ok=True)
     outpath = opt.outdir
 
@@ -306,7 +309,9 @@ def main():
                         x_samples_ddim = torch.clamp((x_samples_ddim + 1.0) / 2.0, min=0.0, max=1.0)
                         x_samples_ddim = x_samples_ddim.cpu().permute(0, 2, 3, 1).numpy()
 
-                        x_checked_image, has_nsfw_concept = check_safety(x_samples_ddim)
+                        # remove safety checker
+                        # x_checked_image, has_nsfw_concept = check_safety(x_samples_ddim)
+                        x_checked_image = x_samples_ddim
 
                         x_checked_image_torch = torch.from_numpy(x_checked_image).permute(0, 3, 1, 2)
 
